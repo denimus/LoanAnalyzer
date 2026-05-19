@@ -26,8 +26,12 @@
         body {
             background-color: var(--bg-color);
             color: var(--text-color);
-            line-height: 1.6;
-            padding: 20px;
+            line-height: 1.5;
+            padding: 10px;
+        }
+
+        @media (min-width: 768px) {
+            body { padding: 20px; }
         }
 
         .container {
@@ -37,55 +41,64 @@
 
         header {
             text-align: center;
-            margin-bottom: 30px;
-            padding: 20px 0;
+            margin-bottom: 20px;
+            padding: 10px 0;
             border-bottom: 2px solid var(--border-color);
         }
 
         header h1 {
             color: var(--primary-color);
-            font-size: 2rem;
-            margin-bottom: 10px;
+            font-size: 1.5rem;
+            margin-bottom: 6px;
         }
 
         header p {
             color: #718096;
-            font-size: 1rem;
+            font-size: 0.85rem;
         }
 
-        /* Combined Parameters & Overview vertically on all screen sizes */
+        @media (min-width: 768px) {
+            header h1 { font-size: 2rem; }
+            header p { font-size: 1rem; }
+            header { margin-bottom: 30px; padding: 20px 0; }
+        }
+
         .grid-layout {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 25px;
+            gap: 20px;
         }
 
         .card {
             background: var(--card-bg);
             border-radius: 8px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            padding: 24px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            padding: 14px;
             border: 1px solid var(--border-color);
-            margin-bottom: 25px;
+            margin-bottom: 15px;
+        }
+
+        @media (min-width: 768px) {
+            .card { padding: 24px; margin-bottom: 25px; }
         }
 
         .card h2 {
             color: var(--primary-color);
-            font-size: 1.25rem;
-            margin-bottom: 20px;
+            font-size: 1.1rem;
+            margin-bottom: 16px;
             padding-bottom: 8px;
             border-bottom: 2px solid var(--border-color);
         }
 
         .input-group {
-            margin-bottom: 18px;
+            margin-bottom: 16px;
         }
 
         .input-group label {
             display: block;
             font-weight: 600;
             margin-bottom: 6px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
         .input-wrapper {
@@ -107,17 +120,10 @@
             border: 1px solid #cbd5e0;
             border-radius: 6px;
             font-size: 1rem;
-            transition: all 0.2s;
         }
 
         .input-group input.has-prefix {
             padding-left: 28px;
-        }
-
-        .input-group input:focus {
-            outline: none;
-            border-color: var(--secondary-color);
-            box-shadow: 0 0 0 3px rgba(69, 123, 157, 0.2);
         }
 
         button {
@@ -130,7 +136,6 @@
             font-weight: bold;
             border-radius: 6px;
             cursor: pointer;
-            transition: background-color 0.2s;
         }
 
         button:hover {
@@ -140,19 +145,20 @@
         .summary-metrics {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin-bottom: 25px;
+            gap: 10px;
+            margin-bottom: 20px;
         }
 
         @media (min-width: 600px) {
             .summary-metrics {
                 grid-template-columns: repeat(4, 1fr);
+                gap: 15px;
             }
         }
 
         .metric-box {
             background: #f1f5f9;
-            padding: 15px;
+            padding: 10px;
             border-radius: 6px;
             border-left: 4px solid var(--secondary-color);
         }
@@ -162,53 +168,64 @@
         }
 
         .metric-label {
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
             color: #64748b;
             font-weight: 600;
         }
 
         .metric-value {
-            font-size: 1.25rem;
+            font-size: 1rem;
             font-weight: 700;
             color: #1e293b;
-            margin-top: 4px;
+            margin-top: 2px;
         }
 
-        /* FIX: Removed max-height and overflow-y to merge matrix scrollbar with page scrollbar.
-           Kept overflow-x: auto so the massive table safely scrolls sideways on narrow mobile screens. 
-        */
+        @media (min-width: 768px) {
+            .metric-box { padding: 15px; }
+            .metric-value { font-size: 1.25rem; margin-top: 4px; }
+        }
+
+        /* COMPACT RESPONSIVE TABLE STRUCTURE */
         .table-responsive {
             overflow-x: auto;
             border: 1px solid var(--border-color);
             border-radius: 6px;
+            -webkit-overflow-scrolling: touch; /* Smooth scroll on mobile phones */
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
             text-align: left;
-            font-size: 0.9rem;
+            font-size: 0.78rem; /* Dense styling for narrow layouts */
+            white-space: nowrap; /* Stops unwanted line wrapping within figures */
+        }
+
+        @media (min-width: 768px) {
+            table { font-size: 0.9rem; }
         }
 
         th {
             background-color: #f1f5f9;
             color: #475569;
             font-weight: 600;
-            padding: 12px 8px;
+            padding: 8px 6px;
             position: sticky;
             top: 0;
             z-index: 10;
             box-shadow: 0 1px 0 var(--border-color);
-            white-space: normal;
-            word-wrap: break-word;
             vertical-align: bottom;
         }
 
         td {
-            padding: 10px 12px;
+            padding: 8px 6px;
             border-bottom: 1px solid var(--border-color);
+        }
+
+        @media (min-width: 768px) {
+            th { padding: 12px 8px; }
+            td { padding: 10px 12px; }
         }
 
         tr:hover td {
@@ -230,19 +247,28 @@
             border: 1px solid #bfdbfe;
             padding: 12px;
             border-radius: 6px;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: #1e40af;
         }
 
+        /* ULTRA NARROW EQUITY SPLIT METRIC BAR */
         .bar-container {
             display: flex;
             align-items: center;
-            width: 90px;
+            width: 40px; /* Highly narrowed down from 90px */
             background: #e2e8f0;
-            border-radius: 4px;
-            height: 14px;
+            border-radius: 2px;
+            height: 8px;
             overflow: hidden;
         }
+        
+        @media (min-width: 768px) {
+            .bar-container {
+                width: 70px;
+                height: 12px;
+            }
+        }
+
         .bar-principal {
             background-color: #457b9d;
             height: 100%;
@@ -251,6 +277,15 @@
             background-color: #e63946;
             height: 100%;
         }
+
+        /* Shorten long header strings dynamically via CSS on narrow windows */
+        .hdr-long { display: inline; }
+        .hdr-short { display: none; }
+
+        @media (max-width: 767px) {
+            .hdr-long { display: none; }
+            .hdr-short { display: inline; }
+        }
     </style>
 </head>
 <body>
@@ -258,7 +293,7 @@
     <div class="container">
         <header>
             <h1>Loan Amortization & Payoff Analyzer</h1>
-            <p>monthly equity shifts side-by-side with execution metrics to kill the loan early.</p>
+            <p>Monthly equity shifts side-by-side with execution metrics to kill the loan early.</p>
         </header>
 
         <div class="grid-layout">
@@ -286,7 +321,7 @@
                     <button onclick="calculateLoan()">Analyze Matrix</button>
                     
                     <div class="info-tip">
-                        <strong>BEWARE</strong> of "Precomputed Interest" or "Flat-Rate" loans. Lender calculates the interest on the full original loan amount for the entire term right at the beginning and locks it in. Even if you pay off early they will charge you the full interest.
+                        <strong>BEWARE</strong> of "Precomputed Interest" or "Flat-Rate" loans. Early payoff strategies will fail to yield savings if interest parameters fix up front.
                     </div>
                 </div>
             </div>
@@ -322,16 +357,28 @@
                                     <th colspan="4" class="col-divider" style="background-color: #f0fff4; text-align: center; color: #22543d; font-weight:700;">PAYOFF ON SPECIFIC MONTH</th>
                                 </tr>
                                 <tr>
-                                    <th>Month</th>
-                                    <th>Equity Split</th>
-                                    <th>To Principal</th>
-                                    <th>To Interest</th>
-                                    <th>Rem. Balance</th>
+                                    <th>#</th>
+                                    <th>Split</th>
+                                    <th>Principal</th>
+                                    <th>Interest</th>
+                                    <th>Balance</th>
                                     
-                                    <th class="col-divider">Payment to Close Out</th>
-                                    <th>Interest Paid</th>
-                                    <th>Effective Int %</th>
-                                    <th>Interest Saved</th>
+                                    <th class="col-divider">
+                                        <span class="hdr-long">Payment to Close Out</span>
+                                        <span class="hdr-short">Payoff</span>
+                                    </th>
+                                    <th>
+                                        <span class="hdr-long">Interest Paid</span>
+                                        <span class="hdr-short">Int Paid</span>
+                                    </th>
+                                    <th>
+                                        <span class="hdr-long">Effective Int %</span>
+                                        <span class="hdr-short">Eff Int %</span>
+                                    </th>
+                                    <th>
+                                        <span class="hdr-long">Interest Saved</span>
+                                        <span class="hdr-short">Saved</span>
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody></tbody>
@@ -343,9 +390,17 @@
     </div>
 
     <script>
+        // Formats trailing zero integers on input field blur events (.00)
+        const aprInput = document.getElementById('apr');
+        aprInput.addEventListener('blur', function() {
+            if (this.value) {
+                this.value = parseFloat(this.value).toFixed(2);
+            }
+        });
+
         function calculateLoan() {
             const loanAmount = parseFloat(document.getElementById('loanAmount').value);
-            const apr = parseFloat(document.getElementById('apr').value);
+            const apr = parseFloat(aprInput.value);
             const originalMonths = parseInt(document.getElementById('term').value);
 
             if (isNaN(loanAmount) || isNaN(apr) || isNaN(originalMonths) || loanAmount <= 0 || originalMonths <= 0) {
@@ -447,7 +502,12 @@
             return '$' + num.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
         }
 
-        window.onload = calculateLoan;
+        window.onload = function() {
+            if (aprInput.value) {
+                aprInput.value = parseFloat(aprInput.value).toFixed(2);
+            }
+            calculateLoan();
+        };
     </script>
 
 </body>
